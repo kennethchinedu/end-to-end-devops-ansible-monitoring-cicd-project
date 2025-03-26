@@ -1,0 +1,82 @@
+- name: Configure EC2 instance
+  hosts: all
+  become: true
+  remote_user: ubuntu
+  vars_files:
+    - vars.yml
+
+    
+  tasks:
+    - name: Ensure Nginx is installed
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+
+
+    - name: configure the Nginx server
+      ansible.builtin.template:
+        src: templates/nginx.conf.j2
+        dest: /etc/nginx/sites-available/revers_proxy.conf
+        mode: 0644
+
+
+    - name: Remove default Nginx site
+      ansible.builtin.file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+
+    
+    - name: Test Nginx configuration
+      ansible.builtin.command: nginx -t
+      register: nginx_test
+      ignore_errors: yes
+
+    - name: Show Nginx test output
+      ansible.builtin.debug:
+        var: nginx_test.stdout_lines
+
+
+    - name: Start Nginx service
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+        enabled: true
+
+    - name: Configure reverse proxy
+
+
+    - name: Ensure Nginx starts on boot
+      ansible.builtin.service:
+        name: nginx
+        enabled: yes
+
+    - name: restart Nginx service
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+
+    - name: Install Node.js
+      ansible.builtin.shell:
+        cmd: |
+          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash 
+          \. "$HOME/.nvm/nvm.sh"
+          nvm install 22
+          node -v 
+          npm -v
+        register: nodejs_output
+
+    - name: Show Node.js output
+      ansible.builtin.debug:
+        var: nodejs_output.stdout_lines
+
+    - name: Install PM2
+      ansible.builtin.shell:
+        cmd: npm install pm2 -g
+      register: pm2_output
+
+    - name: Show PM2 output
+      ansible.builtin.debug:
+        var: pm2_output.stdout_lines 
+
+

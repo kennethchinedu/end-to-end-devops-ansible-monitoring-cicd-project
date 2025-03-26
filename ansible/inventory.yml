@@ -1,0 +1,4 @@
+---
+plugin: cloud.terraform.terraform_provider
+
+#run ansible-galaxy collection install cloud.terraform
