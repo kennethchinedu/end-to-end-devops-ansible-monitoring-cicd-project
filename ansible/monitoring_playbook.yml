@@ -1,0 +1,59 @@
+- name: Configure EC2 instance
+  hosts: all #this playbook will run on all the servers
+  become: true
+  remote_user: ubuntu
+  vars_files:
+    - vars.yml
+  vars:
+    monitoring_packages:
+      - prometheus
+      - prometheus-node-exporter
+      - prometheus-blackbox-exporter
+      - prometheus-alertmanager
+
+    
+  tasks:
+    - name: Ensure Nginx is installed
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+    
+    - name: Ensure Nginx starts on boot
+      ansible.builtin.service:
+        name: nginx
+        enabled: yes
+
+    - name: Install monitoring packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ monitoring_packages }}"
+      become: true
+
+    - name: Ensure Prometheus is running
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: started
+        enabled: yes
+      loop: "{{ monitoring_packages }}" 
+
+    - name: copy prometheus.yml file
+      copy:
+        src: /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/templates/prometheus.yml #./ansible/templates/prometheus.yml
+        dest: /etc/prometheus/prometheus.yml
+        mode: 0644 
+
+    # - name: copy prometheus_alert.yml file
+    #   copy:
+    #     src: ./ansible/templates/prometheus_alert.yml
+    #     dest: /etc/prometheus/prometheus_alert.yml
+    #     owner: prometheus
+    #     group: prometheus
+    #     mode: 0644
+
+    - name: restart prometheus service
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: restarted
+      loop: "{{ monitoring_packages }}"

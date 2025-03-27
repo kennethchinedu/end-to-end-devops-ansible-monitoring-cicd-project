@@ -54,6 +54,7 @@ cd your-repo
 
 ### 2. Deploy Infrastructure with Terraform
 ```bash
+#configure backend for storing your statefiles or store this locally, I used s3 in this project
 cd terraform
 terraform init
 terraform apply
@@ -63,6 +64,7 @@ terraform apply
 ```bash
 cd ../ansible
 ansible-playbook -i inventory.yml playbook.yml
+#We are using dynamic inventory for service discovery, configure your access key in  prometheus.yml file correctly
 ```
 
 ### 4. Access the Application

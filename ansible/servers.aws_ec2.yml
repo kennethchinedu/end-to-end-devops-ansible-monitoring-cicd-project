@@ -1,6 +1,7 @@
 plugin: amazon.aws.aws_ec2
-
+strict: False
 
 hostvars:
   ansible_ssh_private_key_file: /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/private_key.pem
-  ansible_user: ubuntu
+  ansible_user: ubuntu 
+  ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
