@@ -40,7 +40,7 @@ resource "aws_instance" "control_node" {
   }
 
   tags = {
-    Name = "worker_nodes"
+    Name = "control_node_server"
   }
 
   provisioner "local-exec" {

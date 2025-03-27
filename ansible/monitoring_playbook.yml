@@ -1,7 +1,7 @@
 - name: Configure EC2 instance
-  hosts: all #this playbook will run on all the servers
+  hosts: app #this playbook will run on all the servers
   become: true
-  remote_user: ubuntu
+  remote_user: root
   vars_files:
     - vars.yml
   vars:
