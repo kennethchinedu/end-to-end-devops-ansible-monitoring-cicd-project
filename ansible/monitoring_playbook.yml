@@ -44,6 +44,12 @@
         dest: /etc/prometheus/prometheus.yml
         mode: 0644 
 
+    - name: copy dynamic target file
+      copy:
+        src: /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/targets.yml #./ansible/templates/prometheus.yml
+        dest: /etc/prometheus/targets.yml
+        mode: 0644 
+
     # - name: copy prometheus_alert.yml file
     #   copy:
     #     src: ./ansible/templates/prometheus_alert.yml
@@ -52,8 +58,8 @@
     #     group: prometheus
     #     mode: 0644
 
-    - name: restart prometheus service
-      ansible.builtin.service:
-        name: "{{ item }}"
-        state: restarted
-      loop: "{{ monitoring_packages }}"
+    # - name: restart prometheus service
+    #   ansible.builtin.service:
+    #     name: "{{ item }}"
+    #     state: restarted
+    #   loop: "{{ monitoring_packages }}"

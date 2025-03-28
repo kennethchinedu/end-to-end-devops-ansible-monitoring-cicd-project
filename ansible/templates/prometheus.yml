@@ -27,50 +27,27 @@ scrape_configs:
 
 
     #Using dynamic config to discover ec2 instances on AWS
-  - job_name: 'aws-ec2'
-    ec2_sd_configs:
-      - region: 'us-east-1'
-        access_key: ''
-        secret_key: ''
-        port: 9100 
-    # relabel_configs:
-    #   - source_labels: [__meta_ec2_tag_Name]
-    #     target_label: "worker_nodes" 
-    #     regex: true
-
-      # - source_labels: [__meta_ec2_instance_state]
-      #   regex: "worker_nodes"
-        # action: keep
-
-
-
-  # - job_name: 'node-exporter'
+  # - job_name: 'aws-ec2'
   #   ec2_sd_configs:
   #     - region: 'us-east-1'
   #       access_key: ''
-  #       secret_key: ''
-  #   relabel_configs:
-  #     - source_labels: [__meta_ec2_tag_Name]
-  #       target_label: instance
-  #     - source_labels: [__meta_ec2_instance_state]
-  #       regex: "worker_nodes"
-  #       action: keep
-  #     - target_label: __address__
-  #       replacement: ${1}:9100  # Add port 9100
+  #       secret_key: '' 
+  #       # role_arn: ''
+  #       port: 9100 
+  #       filters:
+  #         - name: "tag:Name"
+  #           values: ["worker_nodes"] 
 
-  # - job_name: 'prometheus-job'
-  #   ec2_sd_configs:
-  #     - region: 'us-east-1'
-  #       access_key: ''
-  #       secret_key: ''
-  #   relabel_configs:
-  #     - source_labels: [__meta_ec2_tag_Name]
-  #       target_label: instance
-  #     - source_labels: [__meta_ec2_instance_state]
-  #       regex: "worker_nodes"
-  #       action: keep
-  #     - target_label: __address__
-  #       replacement: ${1}:9090  # Add port 9200
+  - job_name: 'dynamic-config'
+    file_sd_configs:
+      - refresh_interval: "5m"
+        files:
+          - /etc/prometheus/targets.yml
+
+    
+      
+  
+
 
     # static_configs:
     #   - targets: ["localhost:9090"] 

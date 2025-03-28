@@ -1,0 +1,23 @@
+- targets:
+    - localhost:9090 
+  labels:
+    group: 'prometheus'  
+    region: 'us-east-1'
+
+
+- targets:
+    - 54.90.119.105:9100 #node exporter
+    - 54.90.119.105:9115 #blackbox exporter 
+    - 54.90.119.105 #nginx 
+  labels:
+    group: 'control_nodes'  
+    region: 'us-east-1'
+
+
+- targets:
+    - 3.84.251.171:9100 #node exporter
+    - 3.84.251.171:9115 #blackbox exporter
+    - 3.84.251.171:9115 #nginx
+  labels:
+    group: 'worker_nodes'  
+    region: 'us-east-1'
