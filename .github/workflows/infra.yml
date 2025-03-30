@@ -1,7 +1,7 @@
 name: Infra Pipeline
 
 on:
-   pull_request:
+   push:
      branches:
        - main
      paths:
@@ -39,8 +39,15 @@ jobs:
       - name: Set up Ansible
         run: sudo apt-get update && sudo apt-get install -y ansible
 
-      - name: Run Ansible Playbook
-        run: ansible-playbook -i ansible/servers.aws_ec2.yml playbook.yml  -vvv
+
+      - name: Run server playbook
+        run: |
+          ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml   -vvv
+        working-directory: ansible
+        
+      - name: Run Monitoring Playbook
+        run: ansible-playbook -i hosts monitoring_playbook.yml -vvv
+        working-directory: ansible
 
 
 
