@@ -24,7 +24,7 @@ resource "aws_key_pair" "server_pair" {
 #creating control node server
 resource "aws_instance" "control_node" {
   ami           = var.servers_ami
-  instance_type = var.control_node_instance_type
+  instance_type = var.worker_node_instance_type
   key_name = aws_key_pair.server_pair.key_name
   associate_public_ip_address = true 
 

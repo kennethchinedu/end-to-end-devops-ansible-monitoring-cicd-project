@@ -24,6 +24,25 @@
         name: nginx
         enabled: yes
 
+    - name: copy nginx configuration file
+      copy:
+        src: /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/templates/default #./ansible/templates/prometheus.yml
+        dest: /etc/nginx/sites-enabled/default
+        #mode: 0644 
+
+    - name: Remove a file
+      ansible.builtin.file:
+        path: /etc/nginx/sites-available/default
+        state: absent
+
+    - name: test nginx configuration 
+      ansible.builtin.command: nginx -t
+      
+    - name: restart nginx service
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+
     - name: Install monitoring packages
       apt:
         name: "{{ item }}"
@@ -46,7 +65,7 @@
 
     - name: copy dynamic target file
       copy:
-        src: /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/targets.yml #./ansible/templates/prometheus.yml
+        src: /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/templates/targets.yml #./ansible/templates/prometheus.yml
         dest: /etc/prometheus/targets.yml
         mode: 0644 
 

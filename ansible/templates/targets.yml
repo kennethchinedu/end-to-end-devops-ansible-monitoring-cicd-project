@@ -20,4 +20,6 @@
     - 3.84.251.171:9115 #nginx
   labels:
     group: 'worker_nodes'  
-    region: 'us-east-1'
+    region: 'us-east-1' 
+
+    

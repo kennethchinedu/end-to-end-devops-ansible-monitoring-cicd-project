@@ -7,7 +7,8 @@
   vars:
     monitoring_packages:
       - prometheus-node-exporter
-      - prometheus-blackbox-exporter
+      - prometheus-blackbox-exporter 
+    github_token: ""
     
   tasks:
     - name: Ensure Nginx is installed
@@ -64,7 +65,8 @@
       ansible.builtin.shell:
         cmd: |
           curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-          \. "$HOME/.nvm/nvm.sh"
+          \. "$HOME/.nvm/nvm.sh" 
+          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
           nvm install 14
           node -v
           npm -v
@@ -85,10 +87,50 @@
     #   ansible.builtin.debug:
     #     var: pm2_output.stdout_lines 
 
+    # - name: copy app files 
+    #   ansible.builtin.copy:
+    #     src: ./app 
+    #     dest: /app
+        #mode: 0644 
+
+
+    - name: Pull latest configuration from private Git repo
+      ansible.builtin.git:
+        repo: "https://{{github_token}}@github.com/kennethchinedu/end-to-end-devops-ansible-monitoring-cicd-project.git"
+        dest: /software
+        version: main
+        update: yes
+        force: yes
+      # vars:
+      #   github_token: {{ github_token }}
+
+    - name: Install app dependencies  
+      ansible.builtin.shell:
+        cmd: |
+          cd /app
+          npm install
+      register: app_output
+
+    - name: Show app output
+      ansible.builtin.debug:
+        var: app_output.stdout_lines
+    
+    - name: Start app
+      ansible.builtin.shell:
+        cmd: |
+          cd /app
+          npm run dev 
+      register: app_start_output
+
+    - name: Show app start output
+      ansible.builtin.debug:
+        var: app_start_output.stdout_lines
+    
+
     - name: Install monitoring packages
       apt:
         name: "{{ item }}"
-        state: present
+        state: present   
       loop: "{{ monitoring_packages }}"
       become: true
     
