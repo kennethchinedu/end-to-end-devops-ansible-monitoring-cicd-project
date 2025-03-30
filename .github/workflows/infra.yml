@@ -19,6 +19,7 @@ jobs:
   terraform:
 #    if: ${{ github.event_name == 'push' && (github.event.commits.*.message | join(' ') =~ 'terraform' || github.event.head_commit.message =~ 'terraform') }}
     runs-on: ubuntu-latest
+    environment: dev
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
