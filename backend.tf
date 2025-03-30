@@ -4,5 +4,6 @@ terraform {
     bucket = "terraform-state-file-anams"
     key    = "ansible-project1/terraform.tfstate"
     region = "us-east-1"
+    encrypt        = true
   }
 }
