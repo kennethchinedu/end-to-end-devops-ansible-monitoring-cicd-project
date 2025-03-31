@@ -18,6 +18,10 @@ resource "aws_key_pair" "server_pair" {
   provisioner "local-exec" {
       command = "echo '${tls_private_key.kube-server-key.private_key_pem}' > ./private_key.pem"
    }
+
+   provisioner "local-exec" {
+     command = "chmod 600 private_key.pem "
+  }
 }
 
 
@@ -67,6 +71,8 @@ resource "aws_instance" "workder-node" {
   provisioner "local-exec" {
      command = "echo 'worker:${self.public_ip}'  >> ./ansible/hosts"
   }
+
+  
 }
 
 
