@@ -53,7 +53,7 @@ jobs:
 
       - name: Run server playbook
         run: |
-          ansible-playbook -i ./ansible/servers.aws_ec2.yml  ./ansible/server_playbook.yml   -vvv
+          ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml   -vvv
         working-directory: ansible
         
       - name: Run Monitoring Playbook
