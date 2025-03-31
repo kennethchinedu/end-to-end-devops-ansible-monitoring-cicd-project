@@ -48,7 +48,7 @@ jobs:
       - name: install boto & aws collection
         run: |
           ansible-galaxy collection install cloud.terraform
-          sudo apt-get install python3-pip -y && pip3 install boto boto3
+          pip install boto boto3
 
 
       - name: Run server playbook
