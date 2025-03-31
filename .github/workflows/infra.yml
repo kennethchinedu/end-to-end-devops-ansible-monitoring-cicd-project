@@ -49,8 +49,11 @@ jobs:
 
       - name: install boto & aws collection
         run: |
+          pip install requests boto3 botocore
           ansible-galaxy collection install cloud.terraform
-          pip install boto boto3
+          ansible-galaxy collection install amazon.aws
+          ansible-galaxy collection install community.aws
+          
 
       - name: Set Ansible Python Interpreter
         run: |
