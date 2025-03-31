@@ -57,8 +57,8 @@ jobs:
      
       - name: Set up Ansible
         run: | 
-          pipx install --include-deps ansible 
-          pipx inject ansible argcomplete
+          pip3 install ansible
+          ansible --version | grep "python version"
 
 
       - name: install boto & aws collection
