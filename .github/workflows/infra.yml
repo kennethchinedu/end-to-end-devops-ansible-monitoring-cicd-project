@@ -18,7 +18,7 @@ env:
 jobs:
   terraform:
 #    if: ${{ github.event_name == 'push' && (github.event.commits.*.message | join(' ') =~ 'terraform' || github.event.head_commit.message =~ 'terraform') }}
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     environment: dev
     steps:
       - name: Checkout code
@@ -38,13 +38,25 @@ jobs:
           
       - name: Terraform Init
         run:  terraform init
-        
 
       - name: Terraform Apply
         run: terraform apply --auto-approve 
+      
+      
+        
+  # ansible:
+  #   runs-on: self-hosted
+  #   steps:
+
+  #     - name: Checkout code
+  #       uses: actions/checkout@v3
+
+      - name: set up python
+        run: sudo apt-get update && sudo apt-get install -y python3-pip python3-venv
+
+     
       - name: Set up Ansible
         run: sudo apt-get update && sudo apt-get install -y ansible 
-
 
 
       - name: install boto & aws collection
