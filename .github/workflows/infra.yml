@@ -45,6 +45,9 @@ jobs:
       - name: Set up Ansible
         run: sudo apt-get update && sudo apt-get install -y ansible 
 
+      - name: install boto
+        run: sudo apt-get install python3-pip -y && pip3 install boto boto3
+
 
       - name: Run server playbook
         run: |
