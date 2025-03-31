@@ -56,7 +56,9 @@ jobs:
 
      
       - name: Set up Ansible
-        run: sudo apt-get update && sudo apt-get install -y ansible 
+        run: | 
+          pipx install --include-deps ansible 
+          pipx inject ansible argcomplete
 
 
       - name: install boto & aws collection
