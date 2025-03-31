@@ -16,6 +16,7 @@ terraform {
 
 module "server_module" {
   source = "./terraform_vpc_module/"
+  
 
   
 #   parameter1 = var.parameter1

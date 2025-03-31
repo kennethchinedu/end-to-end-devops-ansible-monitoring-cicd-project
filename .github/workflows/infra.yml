@@ -41,9 +41,7 @@ jobs:
         
 
       - name: Terraform Apply
-        run: terraform apply --auto-approve -var-file=terraform_vpc_module/dev.tfvars
-
-
+        run: terraform apply --auto-approve 
       - name: Set up Ansible
         run: sudo apt-get update && sudo apt-get install -y ansible 
 

@@ -1,5 +1,4 @@
 .terraform* 
-variable.tf 
 terraform.tfstate*
 private_key.pem
 pubkey.pem
