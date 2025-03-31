@@ -45,11 +45,17 @@ jobs:
       - name: Set up Ansible
         run: sudo apt-get update && sudo apt-get install -y ansible 
 
+
+
       - name: install boto & aws collection
         run: |
           ansible-galaxy collection install cloud.terraform
           pip install boto boto3
 
+      - name: Set Ansible Python Interpreter
+        run: |
+            echo "ANSIBLE_PYTHON_INTERPRETER=$(which python)" >> $GITHUB_ENV
+        
 
       - name: Run server playbook
         run: |
