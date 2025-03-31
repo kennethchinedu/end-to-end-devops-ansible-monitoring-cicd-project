@@ -45,13 +45,15 @@ jobs:
       - name: Set up Ansible
         run: sudo apt-get update && sudo apt-get install -y ansible 
 
-      - name: install boto
-        run: sudo apt-get install python3-pip -y && pip3 install boto boto3
+      - name: install boto & aws collection
+        run: |
+          ansible-galaxy collection install cloud.terraform
+          sudo apt-get install python3-pip -y && pip3 install boto boto3
 
 
       - name: Run server playbook
         run: |
-          ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml   -vvv
+          ansible-playbook -i ./ansible/servers.aws_ec2.yml  ./ansible/server_playbook.yml   -vvv
         working-directory: ansible
         
       - name: Run Monitoring Playbook
