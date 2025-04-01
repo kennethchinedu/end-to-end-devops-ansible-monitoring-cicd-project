@@ -68,7 +68,7 @@ jobs:
           ansible-galaxy collection install cloud.terraform
           ansible-galaxy collection install amazon.aws
           ansible-galaxy collection install community.aws
-          sudo chown -R ansible:ansible /home/ansible 
+        
 
 
       - name: Check ansible config file
