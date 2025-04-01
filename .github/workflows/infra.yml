@@ -69,7 +69,9 @@ jobs:
           ansible-galaxy collection install amazon.aws
           ansible-galaxy collection install community.aws
         
-
+      - name: List files in ansible/templates
+        run: ls -la
+        working-directory: ansible/templates/
 
       - name: Check ansible config file
         run: |
