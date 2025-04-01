@@ -45,33 +45,38 @@ jobs:
       
       
         
-  # ansible:
-  #   runs-on: self-hosted
-  #   steps:
+  ansible:
+    runs-on: self-hosted
+    steps:
 
-  #     - name: Checkout code
-  #       uses: actions/checkout@v3
+      - name: Checkout only the Ansible folder into a custom directory
+        uses: actions/checkout@v4
+        with:
+          path: /ansible
+          sparse-checkout: "ansible"
+          sparse-checkout-cone-mode: false
+    
 
       - name: set up python
         run: sudo apt-get update && sudo apt-get install -y python3-pip python3-venv
 
      
-      - name: Set up Ansible
-        run: | 
-          pip3 install ansible
-          ansible --version | grep "python version"
+      # - name: Set up Ansible
+      #   run: | 
+      #     pip3 install ansible
+      #     ansible --version | grep "python version"
 
 
-      - name: install boto & aws collection
-        run: |
-          pip install requests boto3 botocore
-          ansible-galaxy collection install cloud.terraform
-          ansible-galaxy collection install amazon.aws
-          ansible-galaxy collection install community.aws
+      # - name: install boto & aws collection
+      #   run: |
+      #     pip install requests boto3 botocore
+      #     ansible-galaxy collection install cloud.terraform
+      #     ansible-galaxy collection install amazon.aws
+      #     ansible-galaxy collection install community.aws
         
-      - name: List files in ansible/templates
-        run: ls -la
-        working-directory: ansible/templates/
+      # - name: List files in ansible/templates
+      #   run: ls -la
+      #   working-directory: ansible/templates/
 
       - name: Check ansible config file
         run: |
