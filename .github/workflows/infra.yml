@@ -75,7 +75,7 @@ jobs:
 
       - name: Check ansible config file
         run: |
-              cp ansible.cfg / 
+              sudo cp ansible.cfg / 
               ansible --version
         working-directory: ansible/templates/  
 
