@@ -71,7 +71,7 @@ jobs:
         run: |
        
           # sudo apt install pipx -y 
-          pipx install requests boto3 botocore
+          pipx install  boto3 botocore
           ansible-galaxy collection install cloud.terraform
           ansible-galaxy collection install amazon.aws
           ansible-galaxy collection install community.aws
