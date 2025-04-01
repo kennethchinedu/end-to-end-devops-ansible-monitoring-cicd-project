@@ -67,12 +67,12 @@ jobs:
       #     ansible --version | grep "python version"
 
 
-      # - name: install boto & aws collection
-      #   run: |
-      #     pip install requests boto3 botocore
-      #     ansible-galaxy collection install cloud.terraform
-      #     ansible-galaxy collection install amazon.aws
-      #     ansible-galaxy collection install community.aws
+      - name: install boto & aws collection
+        run: |
+          pip install requests boto3 botocore
+          ansible-galaxy collection install cloud.terraform
+          ansible-galaxy collection install amazon.aws
+          ansible-galaxy collection install community.aws
         
       # - name: List files in ansible/templates
       #   run: ls -la
@@ -104,7 +104,6 @@ jobs:
         
       - name: Run Monitoring Playbook
         run: ansible-playbook -i hosts monitoring_playbook.yml -vvv
-        # working-directory: ansible
-
+        working-directory: ansible/ansible
 
 
