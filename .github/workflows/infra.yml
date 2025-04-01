@@ -68,7 +68,15 @@ jobs:
           ansible-galaxy collection install cloud.terraform
           ansible-galaxy collection install amazon.aws
           ansible-galaxy collection install community.aws
-          
+          sudo chown -R ansible:ansible /home/ansible 
+
+
+      - name: Check ansible config file
+        run: |
+              cp ansible.cfg / 
+              ansible --version
+        working-directory: ansible/templates  
+
 
       - name: Set Ansible Python Interpreter
         run: |
@@ -76,8 +84,8 @@ jobs:
         
 
       - name: Run server playbook
-        run: |
-          ANSIBLE_HOST_KEY_CHECKING=False  ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml  --private-key=${{ secrets.PRIVATE_KEY }} -vvv
+        run: | 
+          ANSIBLE_HOST_KEY_CHECKING=False  ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml  --private-key=${{ secrets.PRIVATE_KEY }} -vvvvv
         working-directory: ansible
         
       - name: Run Monitoring Playbook

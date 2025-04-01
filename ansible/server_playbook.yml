@@ -1,6 +1,6 @@
 - name: Configure EC2 instance
   hosts: all #this playbook will run on all the servers
-  become: true
+  # become: true
   remote_user: ubuntu
   vars_files:
     - vars.yml
