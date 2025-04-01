@@ -57,8 +57,8 @@ jobs:
           # sparse-checkout-cone-mode: false
     
 
-      - name: set up python
-        run: sudo apt-get update && sudo apt-get install -y python3-pip python3-venv
+      # - name: set up python
+      #   run: sudo apt-get update && sudo apt-get install -y python3-pip python3-venv
 
      
       # - name: Set up Ansible
