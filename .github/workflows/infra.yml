@@ -69,7 +69,8 @@ jobs:
 
       - name: install boto & aws collection
         run: |
-          pip install requests boto3 botocore
+          sudo apt install pipx -y 
+          pipx install requests boto3 botocore
           ansible-galaxy collection install cloud.terraform
           ansible-galaxy collection install amazon.aws
           ansible-galaxy collection install community.aws
