@@ -103,7 +103,7 @@ jobs:
         
       - name: Run Monitoring Playbook
         run: ansible-playbook -i hosts monitoring_playbook.yml -vvv
-        working-directory: ansible/ansible/
+        working-directory: /ansible/ansible/
 
 
 
