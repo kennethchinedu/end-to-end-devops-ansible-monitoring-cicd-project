@@ -93,7 +93,7 @@ jobs:
 
       - name: Run server playbook
         run: | 
-          ANSIBLE_HOST_KEY_CHECKING=False  ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml  --private-key=${{ secrets.PRIVATE_KEY }} -vvvvv
+          ANSIBLE_HOST_KEY_CHECKING=False  ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml  --private-key  ~/.ssh/id_rsa -vvvvv
         working-directory: ansible
         
       - name: Run Monitoring Playbook
