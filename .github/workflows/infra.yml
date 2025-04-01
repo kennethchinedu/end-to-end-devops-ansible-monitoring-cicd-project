@@ -94,16 +94,17 @@ jobs:
       - name: Set Ansible Python Interpreter
         run: |
             echo "ANSIBLE_PYTHON_INTERPRETER=$(which python)" >> $GITHUB_ENV
+            pwd 
         
 
       - name: Run server playbook
         run: | 
           ANSIBLE_HOST_KEY_CHECKING=False  ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml  --private-key  ~/.ssh/id_rsa -vvvvv
-        working-directory: /ansible/ansible/
+        working-directory: /ansible/
         
       - name: Run Monitoring Playbook
         run: ansible-playbook -i hosts monitoring_playbook.yml -vvv
-        working-directory: /ansible/ansible/
+        working-directory: /ansible/
 
 
 
