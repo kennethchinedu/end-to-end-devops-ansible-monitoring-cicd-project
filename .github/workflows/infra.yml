@@ -77,7 +77,9 @@ jobs:
 
       - name: Run server playbook
         run: |
-          ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml  --private-key=${{ secrets.PRIVATE_KEY }} -vvv
+          echo "${{ secrets.PRIVATE_KEY }}" | base64 --decode > /tmp/private_key.pem
+          chmod 600 /tmp/private_key.pem
+          ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml  --private-key=/tmp/private_key.pem -vvv
         working-directory: ansible
         
       - name: Run Monitoring Playbook
