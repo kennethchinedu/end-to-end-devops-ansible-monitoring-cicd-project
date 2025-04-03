@@ -91,6 +91,8 @@ jobs:
             mkdir -p ~/.ssh/
             echo "${{ secrets.PRIVATE_KEY }}" | base64 --decode > ~/.ssh/id_rsa
             chmod 600 ~/.ssh/id_rsa
+            chmod 700 ~/.ssh
+            chmod 644 ~/.ssh/known_hosts
             cat ~/.ssh/id_rsa
       
 
@@ -99,10 +101,11 @@ jobs:
             echo "ANSIBLE_PYTHON_INTERPRETER=$(which python)" >> $GITHUB_ENV
             pwd 
             ls
+            cat ~/.ssh/id_rsa
         
       - name: Run server playbook
         run: | 
-          ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml   --private-key ~/.ssh/id_rsa -vvvvv
+          ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml   --key-file ~/.ssh/id_rsa -vvvvv
         working-directory: ansible
         
       - name: Run Monitoring Playbook
