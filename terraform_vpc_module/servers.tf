@@ -47,9 +47,9 @@ resource "aws_instance" "control_node" {
     Name = "control_node_server"
   }
 
-  provisioner "local-exec" {
-     command = "echo 'master:${self.public_ip}'  >> ./ansible/hosts" 
-  }
+  # provisioner "local-exec" {
+  #    command = "echo 'master:${self.public_ip}'  >> ./ansible/hosts" 
+  # }
 }
 
 #Creating the worker nodes
