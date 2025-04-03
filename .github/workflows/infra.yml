@@ -50,8 +50,8 @@ jobs:
 
       - name: Checkout only the Ansible folder into a custom directory
         uses: actions/checkout@v4
-        with:
-          path: ansible
+        # with:
+        #   path: ansible
           # sparse-checkout: "ansible"
           # sparse-checkout-cone-mode: false
     
