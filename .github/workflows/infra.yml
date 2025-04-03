@@ -89,7 +89,7 @@ jobs:
       - name: Add SSH key
         run: |
           mkdir -p ~/.ssh/
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
 
@@ -101,7 +101,7 @@ jobs:
         
       - name: Run server playbook
         run: | 
-          ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml  --private-key  /private_key.pem -vvvvv
+          ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml  --private-key ${{ secrets.PRIVATE_KEY }} -vvvvv
         working-directory: ansible
         
       - name: Run Monitoring Playbook
