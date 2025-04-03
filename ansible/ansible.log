@@ -116,3 +116,24 @@ The offending line appears to be:
 2025-04-03 18:11:51,267 p=83389 u=kennethchinedu n=ansible | PLAY [Configure EC2 instance] *************************************************************************************************************************************************************
 2025-04-03 18:11:51,267 p=83389 u=kennethchinedu n=ansible | skipping: no hosts matched
 2025-04-03 18:11:51,267 p=83389 u=kennethchinedu n=ansible | PLAY RECAP ********************************************************************************************************************************************************************************
+2025-04-03 18:17:08,324 p=84568 u=kennethchinedu n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2025-04-03 18:17:08,554 p=84568 u=kennethchinedu n=ansible | PLAY [Configure EC2 instance] *************************************************************************************************************************************************************
+2025-04-03 18:17:08,554 p=84568 u=kennethchinedu n=ansible | skipping: no hosts matched
+2025-04-03 18:17:08,555 p=84568 u=kennethchinedu n=ansible | PLAY RECAP ********************************************************************************************************************************************************************************
+2025-04-03 18:17:27,235 p=84648 u=kennethchinedu n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2025-04-03 18:17:27,487 p=84648 u=kennethchinedu n=ansible | PLAY [Configure EC2 instance] *************************************************************************************************************************************************************
+2025-04-03 18:17:27,487 p=84648 u=kennethchinedu n=ansible | skipping: no hosts matched
+2025-04-03 18:17:27,487 p=84648 u=kennethchinedu n=ansible | PLAY RECAP ********************************************************************************************************************************************************************************
+2025-04-03 18:18:47,986 p=84803 u=kennethchinedu n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2025-04-03 18:18:48,273 p=84803 u=kennethchinedu n=ansible | PLAY [Configure EC2 instance] *************************************************************************************************************************************************************
+2025-04-03 18:18:48,274 p=84803 u=kennethchinedu n=ansible | skipping: no hosts matched
+2025-04-03 18:18:48,274 p=84803 u=kennethchinedu n=ansible | PLAY RECAP ********************************************************************************************************************************************************************************
+2025-04-03 18:20:20,538 p=85136 u=kennethchinedu n=ansible | PLAY [Configure EC2 instance] *************************************************************************************************************************************************************
+2025-04-03 18:20:20,558 p=85136 u=kennethchinedu n=ansible | TASK [Gathering Facts] ********************************************************************************************************************************************************************
+2025-04-03 18:20:32,971 p=85136 u=kennethchinedu n=ansible | ok: [ec2-52-87-233-208.compute-1.amazonaws.com]
+2025-04-03 18:20:33,002 p=85136 u=kennethchinedu n=ansible | TASK [Ensure Nginx is installed] **********************************************************************************************************************************************************
+2025-04-03 18:20:35,452 p=85136 u=kennethchinedu n=ansible |  [ERROR]: User interrupted execution
+

@@ -1,49 +1,50 @@
-# plugin: amazon.aws.aws_ec2
-# strict: False
-
-
-
-# hostvars:
-#   ansible_ssh_private_key_file: ~/.ssh/id_rsa
-#   ansible_user: ubuntu 
-#   ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-
-# filters:
-#   instance-state-name: running  # Only running instances
-#   tag:Role: monitor_server  
-#   tag:Name: monitor_server
-# defaults:
-# host_key_checking : False 
-
-
-
 plugin: amazon.aws.aws_ec2
 strict: False
 
-regions:
-  - us-east-1  
+
+
+hostvars:
+  ansible_ssh_private_key_file: ~/.ssh/id_rsa
+  ansible_user: ubuntu 
+  ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
 
 filters:
   instance-state-name: running  
   tag:Role: monitor_server
-  tag:Name: monitor_server
-
-keyed_groups:
-  - key: tags.Name
-    prefix: tag
-
-# hostnames:
-#   - private-ip-address  # Use private IPs for connecting
-
-# compose:
-#   ansible_host: private_ip_address
+  # tag:Name: webserver
 
 defaults:
-  host_key_checking: False
-  ansible_user: ubuntu
-  ansible_ssh_private_key_file: ~/.ssh/id_rsa
-  ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+host_key_checking : False 
 
 
 
-# You need to configure AWS in cli for this to work correctly
+# plugin: amazon.aws.aws_ec2
+# strict: False
+
+# regions:
+#   - us-east-1  
+
+# filters:
+#   instance-state-name: running  
+#   tag:Role: webserver
+#   tag:Name: webserver
+
+# keyed_groups:
+#   - key: tags.Name
+#     prefix: tag
+
+# # hostnames:
+# #   - private-ip-address  # Use private IPs for connecting
+
+# # compose:
+# #   ansible_host: private_ip_address
+
+# defaults:
+#   host_key_checking: False
+#   ansible_user: ubuntu
+#   ansible_ssh_private_key_file: ~/.ssh/id_rsa
+#   ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+
+
+
+# # You need to configure AWS in cli for this to work correctly
