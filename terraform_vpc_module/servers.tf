@@ -75,4 +75,23 @@ resource "aws_instance" "workder-node" {
   
 }
 
+resource "aws_instance" "monitor_server" {
+  ami = var.servers_ami
+  instance_type = var.worker_node_instance_type
+  key_name = aws_key_pair.server_pair.key_name 
+  associate_public_ip_address = true 
+
+  # Tags for the EC2 instance
+  tags = {
+    Name    = "WebServer"
+    Role    = "monitor_server"
+    Environment = "production" 
+  }
+  security_groups = [
+   aws_security_group.basic_security.name,
+   aws_security_group.monitoring.name 
+  ]
+
+
+}
 

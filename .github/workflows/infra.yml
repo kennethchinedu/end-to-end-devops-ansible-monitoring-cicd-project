@@ -113,7 +113,8 @@ jobs:
         working-directory: ansible
         
       - name: Run Monitoring Playbook
-        run: ansible-playbook -i ./hosts monitoring_playbook.yml --ssh-extra-args="-o StrictHostKeyChecking=no"  -vvv
+        run: | 
+          ansible-playbook -i servers.aws_ec2.yml monitor_playbook.yml --key-file ~/.ssh/id_rsa --ssh-extra-args="-o StrictHostKeyChecking=no" -vvvvv
         working-directory: ansible
 
 
