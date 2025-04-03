@@ -44,9 +44,9 @@ jobs:
         run: terraform apply --auto-approve 
         
         
-  ansible:
-    runs-on: self-hosted
-    steps:
+  # ansible:
+  #   runs-on: self-hosted
+  #   steps:
 
       - name: Checkout only the Ansible folder into a custom directory
         uses: actions/checkout@v4
