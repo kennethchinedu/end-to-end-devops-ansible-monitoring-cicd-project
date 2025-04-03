@@ -26,7 +26,7 @@
 
     - name: copy nginx configuration file
       copy:
-        src: /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/templates/default #./ansible/templates/prometheus.yml
+        src: ./ansible/templates/default #./ansible/templates/prometheus.yml
         dest: /etc/nginx/sites-enabled/default
         #mode: 0644 
 
@@ -59,26 +59,26 @@
 
     - name: copy prometheus.yml file
       copy:
-        src: /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/templates/prometheus.yml #./ansible/templates/prometheus.yml
+        src: ./ansible/templates/prometheus.yml #./ansible/templates/prometheus.yml
         dest: /etc/prometheus/prometheus.yml
         mode: 0644 
 
     - name: copy dynamic target file
       copy:
-        src: /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/templates/targets.yml #./ansible/templates/prometheus.yml
+        src: ./ansible/templates/targets.yml #./ansible/templates/prometheus.yml
         dest: /etc/prometheus/targets.yml
         mode: 0644 
 
-    # - name: copy prometheus_alert.yml file
-    #   copy:
-    #     src: ./ansible/templates/prometheus_alert.yml
-    #     dest: /etc/prometheus/prometheus_alert.yml
-    #     owner: prometheus
-    #     group: prometheus
-    #     mode: 0644
+    - name: copy prometheus_alert.yml file
+      copy:
+        src: ./ansible/templates/prometheus_alert.yml
+        dest: /etc/prometheus/prometheus_alert.yml
+        owner: prometheus
+        group: prometheus
+        mode: 0644
 
-    # - name: restart prometheus service
-    #   ansible.builtin.service:
-    #     name: "{{ item }}"
-    #     state: restarted
-    #   loop: "{{ monitoring_packages }}"
+    - name: restart prometheus service
+      ansible.builtin.service:
+        name: "{{ item }}"
+        state: restarted
+      loop: "{{ monitoring_packages }}"
