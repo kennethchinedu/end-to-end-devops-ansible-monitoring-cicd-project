@@ -96,7 +96,9 @@ jobs:
             chmod 600 ~/.ssh/id_rsa
             chmod 700 ~/.ssh
             chmod 644 ~/.ssh/known_hosts
-            cat ~/.ssh/id_rsa
+            ssh-keyscan ec2-3-92-195-0.compute-1.amazonaws.com >> ~/.ssh/known_hosts
+            ssh-keyscan ec2-34-229-130-120.compute-1.amazonaws.com >> ~/.ssh/known_hosts
+           
       
 
       - name: Set Ansible Python Interpreter
