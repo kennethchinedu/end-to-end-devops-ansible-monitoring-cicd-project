@@ -4,8 +4,10 @@
   remote_user: ubuntu
   become: true
   vars_files:
-    - vars.yml
+    - vars.yml 
+      
   vars:
+    ansible_python_interpreter: /usr/bin/python3
     monitoring_packages:
       - prometheus-node-exporter
       - prometheus-blackbox-exporter 
