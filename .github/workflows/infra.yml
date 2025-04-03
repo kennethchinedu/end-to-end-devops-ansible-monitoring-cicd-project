@@ -42,8 +42,7 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply --auto-approve 
-      
-      
+        
         
   ansible:
     runs-on: self-hosted
@@ -111,6 +110,6 @@ jobs:
 
 
 
-        
+
 
 
