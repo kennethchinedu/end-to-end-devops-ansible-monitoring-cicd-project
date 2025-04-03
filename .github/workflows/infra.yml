@@ -98,7 +98,6 @@ jobs:
             echo "ANSIBLE_PYTHON_INTERPRETER=$(which python)" >> $GITHUB_ENV
             pwd 
         
-
       - name: Run server playbook
         run: | 
           ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml  --private-key  ~/.ssh/id_rsa -vvvvv
