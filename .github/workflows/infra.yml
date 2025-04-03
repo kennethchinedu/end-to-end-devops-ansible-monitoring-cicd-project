@@ -107,7 +107,7 @@ jobs:
         
       - name: Run server playbook
         run: | 
-          ansible-playbook -i servers.aws_ec2.yml  server_playbook.yml   --key-file ${{ secrets.PRIVATE_KEY }}" -vvvvv
+          ansible-playbook -i servers.aws_ec2.yml server_playbook.yml --key-file ${{ secrets.PRIVATE_KEY }} --ssh-extra-args="-o StrictHostKeyChecking=no" -vvvvv
         working-directory: ansible
         
       - name: Run Monitoring Playbook
