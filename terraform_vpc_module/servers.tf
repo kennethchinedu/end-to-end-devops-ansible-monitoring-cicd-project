@@ -68,9 +68,9 @@ resource "aws_instance" "workder-node" {
     Name = "worker_nodes"
   }
 
-  provisioner "local-exec" {
-     command = "echo 'worker:${self.public_ip}'  >> ./ansible/hosts"
-  }
+  # provisioner "local-exec" {
+  #    command = "echo 'worker:${self.public_ip}'  >> ./ansible/hosts"
+  # }
 
   
 }
