@@ -100,11 +100,11 @@ jobs:
            
       
 
-      - name: Set Ansible Python Interpreter
-        run: |
-            echo "ANSIBLE_PYTHON_INTERPRETER=$(which python)" >> $GITHUB_ENV
-            pwd 
-            export ANSIBLE_HOST_KEY_CHECKING=False
+      # - name: Set Ansible Python Interpreter
+      #   run: |
+      #       echo "ANSIBLE_PYTHON_INTERPRETER=$(which python)" >> $GITHUB_ENV
+      #       pwd 
+      #       export ANSIBLE_HOST_KEY_CHECKING=False
 
         
       - name: Run server playbook
