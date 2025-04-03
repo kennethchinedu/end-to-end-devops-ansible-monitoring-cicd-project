@@ -70,13 +70,13 @@
         dest: /etc/prometheus/targets.yml
         mode: 0644 
 
-    - name: copy prometheus_alert.yml file
-      copy:
-        src: ./templates/prometheus_alert.yml
-        dest: /etc/prometheus/prometheus_alert.yml
-        owner: prometheus
-        group: prometheus
-        mode: 0644
+    # - name: copy prometheus_alert.yml file
+    #   copy:
+    #     src: ./templates/prometheus_alert.yml
+    #     dest: /etc/prometheus/prometheus_alert.yml
+    #     owner: prometheus
+    #     group: prometheus
+    #     mode: 0644
 
     - name: restart prometheus service
       ansible.builtin.service:
