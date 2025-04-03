@@ -1,6 +1,5 @@
 - name: Configure EC2 instance
-  hosts: app #this playbook will run on all the servers
-  become: true
+  hosts: all #this playbook will run on the monitoring server
   remote_user: ubuntu
   vars_files:
     - vars.yml
@@ -11,11 +10,6 @@
       - prometheus-blackbox-exporter
       - prometheus-alertmanager
 
-    
-
-  filters:
-    instance-state-name: running  # Only running instances
-    tag:Role: monitor_server  
 
   tasks:
     - name: Ensure Nginx is installed

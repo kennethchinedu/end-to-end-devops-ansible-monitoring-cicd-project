@@ -48,3 +48,49 @@
 2025-04-03 16:48:28,876 p=66154 u=kennethchinedu n=ansible | TASK [Ensure Nginx is installed] **********************************************************************************************************************************************************
 2025-04-03 16:48:33,616 p=66154 u=kennethchinedu n=ansible |  [ERROR]: User interrupted execution
 
+2025-04-03 17:32:29,198 p=75031 u=kennethchinedu n=ansible | ansible-playbook [core 2.15.13]
+  config file = /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/ansible.cfg
+  configured module search path = ['/Users/kennethchinedu/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /Users/kennethchinedu/Library/Python/3.9/lib/python/site-packages/ansible
+  ansible collection location = /Users/kennethchinedu/.ansible/collections:/usr/share/ansible/collections
+  executable location = /Users/kennethchinedu/Library/Python/3.9/bin/ansible-playbook
+  python version = 3.9.6 (default, Nov 10 2023, 13:38:27) [Clang 15.0.0 (clang-1500.1.0.2.5)] (/Library/Developer/CommandLineTools/usr/bin/python3)
+  jinja version = 3.1.4
+  libyaml = True
+2025-04-03 17:32:29,199 p=75031 u=kennethchinedu n=ansible | Using /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/ansible.cfg as config file
+2025-04-03 17:32:29,199 p=75031 u=kennethchinedu n=ansible | setting up inventory plugins
+2025-04-03 17:32:29,413 p=75031 u=kennethchinedu n=ansible | Loading collection ansible.builtin from 
+2025-04-03 17:32:29,431 p=75031 u=kennethchinedu n=ansible | host_list declined parsing /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/servers.aws_ec2.yml as it did not pass its verify_file() method
+2025-04-03 17:32:29,432 p=75031 u=kennethchinedu n=ansible | script declined parsing /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/servers.aws_ec2.yml as it did not pass its verify_file() method
+2025-04-03 17:32:29,434 p=75031 u=kennethchinedu n=ansible | Loading collection amazon.aws from /Users/kennethchinedu/Library/Python/3.9/lib/python/site-packages/ansible_collections/amazon/aws
+2025-04-03 17:32:30,058 p=75031 u=kennethchinedu n=ansible | Using inventory plugin 'ansible_collections.amazon.aws.plugins.inventory.aws_ec2' to process inventory source '/Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/servers.aws_ec2.yml'
+2025-04-03 17:33:21,474 p=75031 u=kennethchinedu n=ansible | Parsed /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/servers.aws_ec2.yml inventory source with auto plugin
+2025-04-03 17:33:21,604 p=75031 u=kennethchinedu n=ansible | ERROR! 'filters' is not a valid attribute for a Play
+
+The error appears to be in '/Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/monitoring_playbook.yml': line 1, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Configure EC2 instance
+  ^ here
+
+2025-04-03 17:36:02,550 p=75772 u=kennethchinedu n=ansible |  [ERROR]: User interrupted execution
+
+2025-04-03 17:36:56,015 p=75878 u=kennethchinedu n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: app
+
+2025-04-03 17:36:56,018 p=75878 u=kennethchinedu n=ansible | PLAY [Configure EC2 instance] *************************************************************************************************************************************************************
+2025-04-03 17:36:56,018 p=75878 u=kennethchinedu n=ansible | skipping: no hosts matched
+2025-04-03 17:36:56,018 p=75878 u=kennethchinedu n=ansible | PLAY RECAP ********************************************************************************************************************************************************************************
+2025-04-03 17:38:21,134 p=76209 u=kennethchinedu n=ansible | PLAY [Configure EC2 instance] *************************************************************************************************************************************************************
+2025-04-03 17:38:21,155 p=76209 u=kennethchinedu n=ansible | TASK [Gathering Facts] ********************************************************************************************************************************************************************
+2025-04-03 17:38:41,806 p=76209 u=kennethchinedu n=ansible | fatal: [ec2-52-87-233-208.compute-1.amazonaws.com]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added 'ec2-52-87-233-208.compute-1.amazonaws.com' (ED25519) to the list of known hosts.\r\nno such identity: /Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/private_key.pem: No such file or directory\r\nubuntu@ec2-52-87-233-208.compute-1.amazonaws.com: Permission denied (publickey).", "unreachable": true}
+2025-04-03 17:38:41,812 p=76209 u=kennethchinedu n=ansible | PLAY RECAP ********************************************************************************************************************************************************************************
+2025-04-03 17:38:41,812 p=76209 u=kennethchinedu n=ansible | ec2-52-87-233-208.compute-1.amazonaws.com : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2025-04-03 17:40:45,591 p=76624 u=kennethchinedu n=ansible | PLAY [Configure EC2 instance] *************************************************************************************************************************************************************
+2025-04-03 17:40:45,615 p=76624 u=kennethchinedu n=ansible | TASK [Gathering Facts] ********************************************************************************************************************************************************************
+2025-04-03 17:41:15,718 p=76624 u=kennethchinedu n=ansible | ok: [ec2-52-87-233-208.compute-1.amazonaws.com]
+2025-04-03 17:41:15,758 p=76624 u=kennethchinedu n=ansible | TASK [Ensure Nginx is installed] **********************************************************************************************************************************************************
+2025-04-03 17:41:20,702 p=76624 u=kennethchinedu n=ansible |  [ERROR]: User interrupted execution
+

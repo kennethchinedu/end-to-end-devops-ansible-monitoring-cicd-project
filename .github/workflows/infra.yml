@@ -109,12 +109,12 @@ jobs:
         
       - name: Run server playbook
         run: | 
-          ansible-playbook -i servers.aws_ec2.yml server_playbook.yml --key-file ~/.ssh/id_rsa --ssh-extra-args="-o StrictHostKeyChecking=no" -vvvvv
+          ansible-playbook -i servers.aws_ec2.yml server_playbook.yml --key-file ~/.ssh/id_rsa --ssh-extra-args="-o StrictHostKeyChecking=no" -v
         working-directory: ansible
         
       - name: Run Monitoring Playbook
         run: | 
-          ansible-playbook -i servers.aws_ec2.yml monitor_playbook.yml --key-file ~/.ssh/id_rsa --ssh-extra-args="-o StrictHostKeyChecking=no" -vvvvv
+          ansible-playbook -i montoring.aws_ec2.yml monitoring_playbook.yml --key-file ~/.ssh/id_rsa --ssh-extra-args="-o StrictHostKeyChecking=no" -v
         working-directory: ansible
 
 
