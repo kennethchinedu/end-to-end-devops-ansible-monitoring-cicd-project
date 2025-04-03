@@ -45,6 +45,7 @@ resource "aws_instance" "control_node" {
 
   tags = {
     Name = "control_node_server"
+    Role    = "worker_server"
   }
 
   # provisioner "local-exec" {
@@ -66,6 +67,7 @@ resource "aws_instance" "workder-node" {
 
   tags = {
     Name = "worker_nodes"
+    Role    = "worker_server"
   }
 
   # provisioner "local-exec" {
