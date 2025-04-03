@@ -107,27 +107,27 @@
       # vars:
       #   github_token: {{ github_token }}
 
-    - name: Install app dependencies  
-      ansible.builtin.shell:
-        cmd: |
-          cd /app
-          npm install
-      register: app_output
+    # - name: Install app dependencies  
+    #   ansible.builtin.shell:
+    #     cmd: |
+    #       cd /app
+    #       npm install
+    #   register: app_output
 
-    - name: Show app output
-      ansible.builtin.debug:
-        var: app_output.stdout_lines
+    # - name: Show app output
+    #   ansible.builtin.debug:
+    #     var: app_output.stdout_lines
     
-    - name: Start app
-      ansible.builtin.shell:
-        cmd: |
-          cd /app
-          npm run dev 
-      register: app_start_output
+    # - name: Start app
+    #   ansible.builtin.shell:
+    #     cmd: |
+    #       cd /app
+    #       npm run dev 
+    #   register: app_start_output
 
-    - name: Show app start output
-      ansible.builtin.debug:
-        var: app_start_output.stdout_lines
+    # - name: Show app start output
+    #   ansible.builtin.debug:
+    #     var: app_start_output.stdout_lines
     
 
     - name: Install monitoring packages
