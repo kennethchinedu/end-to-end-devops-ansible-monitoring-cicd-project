@@ -103,8 +103,8 @@ jobs:
         run: |
             echo "ANSIBLE_PYTHON_INTERPRETER=$(which python)" >> $GITHUB_ENV
             pwd 
-            ls
-            cat ~/.ssh/id_rsa
+            export ANSIBLE_HOST_KEY_CHECKING=False
+
         
       - name: Run server playbook
         run: | 
