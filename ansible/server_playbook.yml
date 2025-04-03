@@ -2,6 +2,7 @@
   hosts: all #this playbook will run on all the servers
   # become: true
   remote_user: ubuntu
+  become: true
   vars_files:
     - vars.yml
   vars:

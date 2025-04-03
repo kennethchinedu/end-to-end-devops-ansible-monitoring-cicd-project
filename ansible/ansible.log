@@ -12,3 +12,33 @@
 2025-04-03 13:27:58,663 p=26200 u=kennethchinedu n=ansible | TASK [Ensure Nginx is installed] **********************************************************************************************************************************************************
 2025-04-03 13:28:07,094 p=26200 u=kennethchinedu n=ansible |  [ERROR]: User interrupted execution
 
+2025-04-03 15:13:05,507 p=46638 u=kennethchinedu n=ansible | PLAY [Configure EC2 instance] *************************************************************************************************************************************************************
+2025-04-03 15:13:05,555 p=46638 u=kennethchinedu n=ansible | TASK [Gathering Facts] ********************************************************************************************************************************************************************
+2025-04-03 15:13:18,591 p=46638 u=kennethchinedu n=ansible | ok: [ec2-3-92-195-0.compute-1.amazonaws.com]
+2025-04-03 15:13:18,595 p=46638 u=kennethchinedu n=ansible | ok: [ec2-34-229-130-120.compute-1.amazonaws.com]
+2025-04-03 15:13:18,637 p=46638 u=kennethchinedu n=ansible | TASK [Ensure Nginx is installed] **********************************************************************************************************************************************************
+2025-04-03 15:14:24,839 p=46638 u=kennethchinedu n=ansible | fatal: [ec2-3-92-195-0.compute-1.amazonaws.com]: FAILED! => {"changed": false, "msg": "Failed to lock apt for exclusive operation: Failed to lock directory /var/lib/apt/lists/: E:Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)"}
+2025-04-03 15:14:25,505 p=46638 u=kennethchinedu n=ansible | fatal: [ec2-34-229-130-120.compute-1.amazonaws.com]: FAILED! => {"changed": false, "msg": "Failed to lock apt for exclusive operation: Failed to lock directory /var/lib/apt/lists/: E:Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)"}
+2025-04-03 15:14:25,514 p=46638 u=kennethchinedu n=ansible | PLAY RECAP ********************************************************************************************************************************************************************************
+2025-04-03 15:14:25,515 p=46638 u=kennethchinedu n=ansible | ec2-3-92-195-0.compute-1.amazonaws.com : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-04-03 15:14:25,515 p=46638 u=kennethchinedu n=ansible | ec2-34-229-130-120.compute-1.amazonaws.com : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-04-03 15:15:19,196 p=47143 u=kennethchinedu n=ansible | PLAY [Configure EC2 instance] *************************************************************************************************************************************************************
+2025-04-03 15:15:19,227 p=47143 u=kennethchinedu n=ansible | TASK [Gathering Facts] ********************************************************************************************************************************************************************
+2025-04-03 15:15:27,745 p=47143 u=kennethchinedu n=ansible | ok: [ec2-3-92-195-0.compute-1.amazonaws.com]
+2025-04-03 15:15:28,010 p=47143 u=kennethchinedu n=ansible | ok: [ec2-34-229-130-120.compute-1.amazonaws.com]
+2025-04-03 15:15:28,062 p=47143 u=kennethchinedu n=ansible | TASK [Ensure Nginx is installed] **********************************************************************************************************************************************************
+2025-04-03 15:16:33,950 p=47143 u=kennethchinedu n=ansible | fatal: [ec2-3-92-195-0.compute-1.amazonaws.com]: FAILED! => {"changed": false, "msg": "Failed to lock apt for exclusive operation: Failed to lock directory /var/lib/apt/lists/: E:Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)"}
+2025-04-03 15:16:33,952 p=47143 u=kennethchinedu n=ansible | fatal: [ec2-34-229-130-120.compute-1.amazonaws.com]: FAILED! => {"changed": false, "msg": "Failed to lock apt for exclusive operation: Failed to lock directory /var/lib/apt/lists/: E:Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)"}
+2025-04-03 15:16:33,954 p=47143 u=kennethchinedu n=ansible | PLAY RECAP ********************************************************************************************************************************************************************************
+2025-04-03 15:16:33,954 p=47143 u=kennethchinedu n=ansible | ec2-3-92-195-0.compute-1.amazonaws.com : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-04-03 15:16:33,955 p=47143 u=kennethchinedu n=ansible | ec2-34-229-130-120.compute-1.amazonaws.com : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2025-04-03 15:17:42,243 p=47698 u=kennethchinedu n=ansible | PLAY [Configure EC2 instance] *************************************************************************************************************************************************************
+2025-04-03 15:17:42,260 p=47698 u=kennethchinedu n=ansible | TASK [Gathering Facts] ********************************************************************************************************************************************************************
+2025-04-03 15:17:53,506 p=47698 u=kennethchinedu n=ansible | ok: [ec2-3-92-195-0.compute-1.amazonaws.com]
+2025-04-03 15:17:55,261 p=47698 u=kennethchinedu n=ansible | ok: [ec2-34-229-130-120.compute-1.amazonaws.com]
+2025-04-03 15:17:55,309 p=47698 u=kennethchinedu n=ansible | TASK [Ensure Nginx is installed] **********************************************************************************************************************************************************
+2025-04-03 15:18:22,997 p=47698 u=kennethchinedu n=ansible | changed: [ec2-34-229-130-120.compute-1.amazonaws.com]
+2025-04-03 15:18:24,222 p=47698 u=kennethchinedu n=ansible | changed: [ec2-3-92-195-0.compute-1.amazonaws.com]
+2025-04-03 15:18:24,240 p=47698 u=kennethchinedu n=ansible | TASK [Test Nginx configuration] ***********************************************************************************************************************************************************
+2025-04-03 15:18:27,311 p=47698 u=kennethchinedu n=ansible |  [ERROR]: User interrupted execution
+
