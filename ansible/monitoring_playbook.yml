@@ -1,6 +1,7 @@
 - name: Configure EC2 instance
   hosts: all #this playbook will run on the monitoring server
   remote_user: ubuntu
+  become: true
   vars_files:
     - vars.yml
   vars:
