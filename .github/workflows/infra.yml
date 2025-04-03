@@ -82,7 +82,7 @@ jobs:
 
       - name: Check ansible config file
         run: |
-              sudo cp $GITHUB_WORKSPACE/ansible/ansible/templates/ansible.cfg / 
+              sudo cp $GITHUB_WORKSPACE/ansible/templates/ansible.cfg / 
               ansible --version
         # working-directory: ansible/templates/  
 
