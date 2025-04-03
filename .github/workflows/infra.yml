@@ -97,6 +97,7 @@ jobs:
         run: |
             echo "ANSIBLE_PYTHON_INTERPRETER=$(which python)" >> $GITHUB_ENV
             pwd 
+            ls
         
       - name: Run server playbook
         run: | 
