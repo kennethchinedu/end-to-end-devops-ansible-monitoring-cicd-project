@@ -70,8 +70,8 @@
     - name: Install nodejs
       ansible.builtin.apt:
         name:  "{{ item }}"
-        loop: "{{ node_packages }}"
         state: present
+      loop: "{{ node_packages }}"
       register: nodejs_output
 
     # - name: Install Node.js
