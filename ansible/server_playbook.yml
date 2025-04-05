@@ -115,8 +115,9 @@
     - name: Install app dependencies  
       ansible.builtin.shell:
         cmd: |
-          cd /app
+          cd /app/app
           npm install
+      become: true
       register: app_output
 
     - name: Show app output
