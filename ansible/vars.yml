@@ -1,4 +1,4 @@
 # vars.yml
 server_name: localhost
 backend_server: localhost:3000
-# github_token: {{ secrets.GIT_TOKEN }}
+github_token: "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"
