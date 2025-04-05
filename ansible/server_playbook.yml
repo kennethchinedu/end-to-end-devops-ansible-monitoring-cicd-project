@@ -63,16 +63,22 @@
         name: nginx
         state: restarted
 
-    - name: Install Node.js
-      ansible.builtin.shell:
-        cmd: |
-          curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-          \. "$HOME/.nvm/nvm.sh" 
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          nvm install 14
-          node -v
-          npm -v
-      register: nodejs_output
+    - name: Install nodejs
+      ansible.builtin.apt:
+        name: nodejs
+        state: present
+        register: nodejs_output
+
+    # - name: Install Node.js
+    #   ansible.builtin.shell:
+    #     cmd: |
+    #       curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+    #       \. "$HOME/.nvm/nvm.sh" 
+    #       [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    #       nvm install 14
+    #       node -v
+    #       npm -v
+    #   register: nodejs_output
 
     - name: Show Node.js output
       ansible.builtin.debug:
