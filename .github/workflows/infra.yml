@@ -84,6 +84,7 @@ jobs:
       - name: Check ansible config file
         run: |
               # sudo cp $GITHUB_WORKSPACE/ansible/templates/ansible.cfg / 
+              
               ansible --version
         # working-directory: ansible/templates/  
 
@@ -98,7 +99,7 @@ jobs:
             chmod 700 ~/.ssh
             chmod 644 ~/.ssh/known_hosts
             
-            
+
            
       
 

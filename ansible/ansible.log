@@ -151,3 +151,4 @@ The offending line appears to be:
 2025-04-03 18:35:24,403 p=88035 u=kennethchinedu n=ansible | ec2-52-87-233-208.compute-1.amazonaws.com : ok=3    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
 2025-04-05 23:09:39,286 p=27068 u=kennethchinedu n=ansible | ERROR! Unable to read source file (/Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/var.yml): [Errno 2] No such file or directory: '/Users/kennethchinedu/Desktop/Devops/Learn/ansible-project/ansible/var.yml'
 2025-04-05 23:09:55,431 p=27153 u=kennethchinedu n=ansible | Encryption successful
+2025-04-05 23:26:22,940 p=30471 u=kennethchinedu n=ansible | Decryption successful
