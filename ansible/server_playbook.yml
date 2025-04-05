@@ -67,7 +67,7 @@
       ansible.builtin.apt:
         name: nodejs
         state: present
-        register: nodejs_output
+      register: nodejs_output
 
     # - name: Install Node.js
     #   ansible.builtin.shell:
