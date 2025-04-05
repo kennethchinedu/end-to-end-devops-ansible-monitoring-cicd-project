@@ -64,7 +64,7 @@
 
     - name: restart Nginx service
       ansible.builtin.service:
-        name: item 
+        name: nginx 
         state: restarted
 
     - name: Install nodejs
