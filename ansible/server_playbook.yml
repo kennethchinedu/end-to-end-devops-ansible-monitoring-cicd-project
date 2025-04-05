@@ -98,11 +98,11 @@
 
     - name: Pull latest configuration from private Git repo
       ansible.builtin.git:
-        repo: "https://{{github_token}}@github.com/kennethchinedu/end-to-end-devops-ansible-monitoring-cicd-project.git"
-        dest: /software
+        repo: "https://${{ env.GITHUB_TOKEN }}@github.com/kennethchinedu/end-to-end-devops-ansible-monitoring-cicd-project.git"
+        dest: /app
         version: main
         update: yes
-        force: yes
+        # force: yes
       # vars:
       #   github_token: {{ github_token }}
 
