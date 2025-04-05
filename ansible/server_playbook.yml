@@ -10,6 +10,10 @@
     monitoring_packages:
       - prometheus-node-exporter
       - prometheus-blackbox-exporter 
+    node_packages:
+      - nodejs
+      - npm
+
     # github_token: "{{ secrets.GIT_TOKEN }}"
     
   tasks:
@@ -60,12 +64,13 @@
 
     - name: restart Nginx service
       ansible.builtin.service:
-        name: nginx
+        name: item 
         state: restarted
 
     - name: Install nodejs
       ansible.builtin.apt:
-        name: nodejs
+        name:  "{{ item }}"
+        loop: "{{ node_packages }}"
         state: present
       register: nodejs_output
 
