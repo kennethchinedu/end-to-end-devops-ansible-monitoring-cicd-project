@@ -48,7 +48,7 @@ resource "aws_route_table" "kube_route_table" {
 
 } 
 
-#Associating route table to  subnet 
+#Associating route table to  subnet
 resource "aws_route_table_association" "subnet1" {
   subnet_id      = aws_subnet.subnet1.id
   route_table_id = aws_route_table.kube_route_table.id
