@@ -133,7 +133,7 @@
         chdir: /app/app
 
     - name: Start the application
-      command: pm2 start app.js --name dev-app
+      command: pm2 start npm --name onlineangel -- start
       args:
         chdir: /app/app
 
