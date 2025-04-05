@@ -78,22 +78,16 @@
       ansible.builtin.debug:
         var: nodejs_output.stdout_lines
 
-    # - name: Install PM2
-    #   ansible.builtin.shell:
-    #     cmd: | 
-    #       source $HOME/.nvm/nvm.sh
-    #       npm install pm2 -g
-    #   register: pm2_output
+    - name: Install PM2
+      ansible.builtin.shell:
+        cmd: | 
+          source $HOME/.nvm/nvm.sh
+          npm install pm2 -g
+      register: pm2_output
 
-    # - name: Show PM2 output
-    #   ansible.builtin.debug:
-    #     var: pm2_output.stdout_lines 
-
-    # - name: copy app files 
-    #   ansible.builtin.copy:
-    #     src: ./app 
-    #     dest: /app
-        #mode: 0644 
+    - name: Show PM2 output
+      ansible.builtin.debug:
+        var: pm2_output.stdout_lines 
 
 
     - name: Pull latest configuration from private Git repo
@@ -106,16 +100,16 @@
       # vars:
       #   github_token: {{ github_token }}
 
-    # - name: Install app dependencies  
-    #   ansible.builtin.shell:
-    #     cmd: |
-    #       cd /app
-    #       npm install
-    #   register: app_output
+    - name: Install app dependencies  
+      ansible.builtin.shell:
+        cmd: |
+          cd /app
+          npm install
+      register: app_output
 
-    # - name: Show app output
-    #   ansible.builtin.debug:
-    #     var: app_output.stdout_lines
+    - name: Show app output
+      ansible.builtin.debug:
+        var: app_output.stdout_lines
     
     # - name: Start app
     #   ansible.builtin.shell:
