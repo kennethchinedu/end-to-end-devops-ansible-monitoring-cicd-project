@@ -144,6 +144,16 @@
         chdir: /app/app
     
 
+    - name: Ensure the server is running
+      ansible.builtin.shell:
+        cmd: |
+          curl -I http://localhost:3000
+      register: server_status
+      ignore_errors: yes
+
+    - name: Show server status
+      ansible.builtin.debug:
+        var: server_status.stdout_lines
 
     - name: Install monitoring packages
       apt:
@@ -159,5 +169,8 @@
         enabled: yes
       loop: "{{ monitoring_packages }}"
       become: true
+
+
+
 
    
