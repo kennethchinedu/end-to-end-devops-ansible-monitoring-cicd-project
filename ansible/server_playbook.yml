@@ -128,7 +128,7 @@
 
     
     - name: Build the application
-      ansible.builtin.shell: npm run build
+      ansible.builtin.shell: sudo npm run build
       args:
         chdir: /app/app
 
@@ -169,8 +169,3 @@
         enabled: yes
       loop: "{{ monitoring_packages }}"
       become: true
-
-
-
-
-   
