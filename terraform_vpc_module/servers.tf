@@ -44,7 +44,7 @@ resource "aws_instance" "control_node" {
   }
 
   tags = {
-    Name = "control_node_server"
+    Name = "worker_nodes"
     Role    = "worker_server"
   }
 
