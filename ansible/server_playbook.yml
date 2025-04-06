@@ -128,18 +128,17 @@
 
     
     - name: Build the application
-      command: npm run build
+      ansible.builtin.shell: npm run build
       args:
         chdir: /app/app
 
     - name: Start the application
-      command: pm2 start npm --name onlineangel -- start
+      ansible.builtin.shell: pm2 start npm --name onlineangel -- start
       args:
         chdir: /app/app
 
     - name: Save PM2 process list
-      command: |
-        pm2 save
+      ansible.builtin.shell: |
         pm2 list 
       args:
         chdir: /app/app
