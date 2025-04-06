@@ -140,7 +140,7 @@
     - name: Save PM2 process list
       command: |
         pm2 save
-        pm2 startup systemd
+        # pm2 startup systemd
       args:
         chdir: /app/app
     
