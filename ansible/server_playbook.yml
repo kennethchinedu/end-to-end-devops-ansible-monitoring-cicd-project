@@ -30,7 +30,7 @@
       ansible.builtin.apt:
         name: nginx
         state: present
-        update_cache: true 
+        update_cache: false 
 
     - name: Ensure Nginx starts on boot
       ansible.builtin.service:
@@ -48,7 +48,7 @@
     - name: Configure the Nginx server
       ansible.builtin.copy:
         src: ./templates/reverse_proxy.conf.j2
-        dest: /etc/nginx/conf.d/everse_proxy.conf
+        dest: /etc/nginx/conf.d/reverse_proxy.conf
       
     # - name: Enable new Nginx site
     #   ansible.builtin.file:
