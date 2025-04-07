@@ -15,8 +15,17 @@
       - npm
 
     # github_token: "{{ secrets.GIT_TOKEN }}"
+
+   
     
   tasks:
+
+    - name: Ensure Nginx is absent
+      ansible.builtin.apt:
+        name: nginx
+        state: absent
+        update_cache: true
+
     - name: Ensure Nginx is installed
       ansible.builtin.apt:
         name: nginx
