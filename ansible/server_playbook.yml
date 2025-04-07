@@ -21,7 +21,14 @@
       ansible.builtin.apt:
         name: nginx
         state: present
-        update_cache: true
+        update_cache: true 
+
+    - name: Pull latest configuration from private Git repo
+      ansible.builtin.git:
+        repo: "https://github.com/kennethchinedu/end-to-end-devops-ansible-monitoring-cicd-project.git"
+        dest: /app
+        version: main
+        update: yes
 
 
     - name: Configure the Nginx server
@@ -104,15 +111,6 @@
         var: pm2_output.stdout_lines 
 
 
-    - name: Pull latest configuration from private Git repo
-      ansible.builtin.git:
-        repo: "https://github.com/kennethchinedu/end-to-end-devops-ansible-monitoring-cicd-project.git"
-        dest: /app
-        version: main
-        update: yes
-        # force: yes
-      # vars:
-      #   github_token: {{ github_token }}
 
     - name: Install app dependencies  
       ansible.builtin.shell:
