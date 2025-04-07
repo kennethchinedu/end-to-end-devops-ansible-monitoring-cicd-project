@@ -12,25 +12,15 @@
       - prometheus-blackbox-exporter 
     node_packages:
       - nodejs
-      - npm
-
-    # github_token: "{{ secrets.GIT_TOKEN }}"
-
-   
+      - npm   
     
   tasks:
-
-    # - name: Ensure Nginx is absent
-    #   ansible.builtin.apt:
-    #     name: nginx
-    #     state: absent
-    #     update_cache: true
 
     - name: Ensure Nginx is installed
       ansible.builtin.apt:
         name: nginx
         state: present
-        update_cache: false 
+        update_cache: true 
 
     - name: Ensure Nginx starts on boot
       ansible.builtin.service:
@@ -49,27 +39,7 @@
       ansible.builtin.copy:
         src: ./templates/reverse_proxy.conf.j2
         dest: /etc/nginx/conf.d/reverse_proxy.conf
-      
-    # - name: Enable new Nginx site
-    #   ansible.builtin.file:
-    #     src: /etc/nginx/sites-available/reverse_proxy.conf
-    #     dest: /etc/nginx/sites-enabled/reverse_proxy.conf
-    #     state: link
-    
-
-     
-    # - name: Enable Reverse Proxy Site
-    #   ansible.builtin.file:
-    #     src: /etc/nginx/sites-available/reverse_proxy.conf
-    #     dest: /etc/nginx/sites-enabled/reverse_proxy.conf
-    #     state: link
-
-    - name: Remove default Nginx site
-      ansible.builtin.file:
-        path:  /etc/nginx/conf.d/everse_proxy.conf
-        state: absent
-
-    
+          
     - name: Test Nginx configuration
       ansible.builtin.shell:
         cmd: | 
@@ -81,20 +51,10 @@
       ansible.builtin.debug:
         var: nginx_test.stdout_lines
 
-
-
-
-
     - name: reload Nginx service
       ansible.builtin.service:
         name: nginx 
-        state: stopped
-
-
-    - name: reload Nginx service
-      ansible.builtin.service:
-        name: nginx 
-        state: started 
+        state: reloaded
 
     - name: Install nodejs
       ansible.builtin.apt:
@@ -103,16 +63,6 @@
       loop: "{{ node_packages }}"
       register: nodejs_output
 
-    # - name: Install Node.js
-    #   ansible.builtin.shell:
-    #     cmd: |
-    #       curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-    #       \. "$HOME/.nvm/nvm.sh" 
-    #       [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    #       nvm install 14
-    #       node -v
-    #       npm -v
-    #   register: nodejs_output
 
     - name: Show Node.js output
       ansible.builtin.debug:
