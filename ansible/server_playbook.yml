@@ -57,9 +57,9 @@
         var: nginx_test.stdout_lines
 
     - name: reload Nginx service
-      ansible.builtin.service:
-        name: nginx 
-        state: reloaded
+      ansible.builtin.shell:
+        cmd: sudo systemctl restart nginx
+
 
     - name: Install nodejs
       ansible.builtin.apt:
