@@ -6,20 +6,20 @@
 
 
 - targets:
-    - 54.90.119.105:9100 #node exporter
-    - 54.90.119.105:9115 #blackbox exporter 
-    - 54.90.119.105 #nginx 
+    - 54.242.28.234:9100 #node exporter
+    - 54.242.28.234:9115 #blackbox exporter 
+    - 54.242.28.234 #nginx 
   labels:
-    group: 'control_nodes'  
+    group: 'worker node 1'  
     region: 'us-east-1'
 
 
 - targets:
-    - 3.84.251.171:9100 #node exporter
-    - 3.84.251.171:9115 #blackbox exporter
-    - 3.84.251.171:9115 #nginx
+    - 18.212.245.231:9100 #node exporter
+    - 18.212.245.231:9115 #blackbox exporter
+    - 18.212.245.231:9115 #nginx
   labels:
-    group: 'worker_nodes'  
+    group: 'worker node 2'  
     region: 'us-east-1' 
 
     
