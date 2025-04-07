@@ -26,9 +26,12 @@
 
     - name: Configure the Nginx server
       ansible.builtin.template:
-        src: templates/nginx.conf
+        src: nginx.conf
         dest: /etc/nginx/sites-available/nginx.conf
         mode: 0644
+      args:
+        chdir: /app/ansible/templates
+    
 
      
     # - name: Enable Reverse Proxy Site
