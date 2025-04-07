@@ -39,6 +39,11 @@
       ansible.builtin.copy:
         src: ./templates/reverse_proxy.conf.j2
         dest: /etc/nginx/conf.d/reverse_proxy.conf
+
+    - name: Remove default site from sites-enabled
+      ansible.builtin.file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
           
     - name: Test Nginx configuration
       ansible.builtin.shell:
