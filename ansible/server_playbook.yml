@@ -94,8 +94,8 @@
     - name: reload Nginx service
       ansible.builtin.service:
         name: nginx 
-        state: start 
-        
+        state: started 
+
     - name: Install nodejs
       ansible.builtin.apt:
         name:  "{{ item }}"
