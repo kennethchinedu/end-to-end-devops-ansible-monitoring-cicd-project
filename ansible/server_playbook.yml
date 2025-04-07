@@ -20,11 +20,11 @@
     
   tasks:
 
-    - name: Ensure Nginx is absent
-      ansible.builtin.apt:
-        name: nginx
-        state: absent
-        update_cache: true
+    # - name: Ensure Nginx is absent
+    #   ansible.builtin.apt:
+    #     name: nginx
+    #     state: absent
+    #     update_cache: true
 
     - name: Ensure Nginx is installed
       ansible.builtin.apt:
