@@ -64,10 +64,10 @@
     #     dest: /etc/nginx/sites-enabled/reverse_proxy.conf
     #     state: link
 
-    # - name: Remove default Nginx site
-    #   ansible.builtin.file:
-    #     path: /etc/nginx/sites-enabled/default
-    #     state: absent
+    - name: Remove default Nginx site
+      ansible.builtin.file:
+        path:  /etc/nginx/conf.d/everse_proxy.conf
+        state: absent
 
     
     - name: Test Nginx configuration
@@ -88,8 +88,14 @@
     - name: reload Nginx service
       ansible.builtin.service:
         name: nginx 
-        state: reloaded
+        state: stopped
 
+
+    - name: reload Nginx service
+      ansible.builtin.service:
+        name: nginx 
+        state: start 
+        
     - name: Install nodejs
       ansible.builtin.apt:
         name:  "{{ item }}"
