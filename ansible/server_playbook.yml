@@ -24,11 +24,11 @@
         update_cache: true
 
 
-    # - name: Configure the Nginx server
-    #   ansible.builtin.template:
-    #     src: templates/nginx.conf.j2
-    #     dest: /etc/nginx/sites-available/reverse_proxy.conf
-    #     mode: 0644
+    - name: Configure the Nginx server
+      ansible.builtin.template:
+        src: templates/nginx.conf.j2
+        dest: /etc/nginx/sites-available/reverse_proxy.conf
+        mode: 0644
 
      
     # - name: Enable Reverse Proxy Site
@@ -37,10 +37,10 @@
     #     dest: /etc/nginx/sites-enabled/reverse_proxy.conf
     #     state: link
 
-    # - name: Remove default Nginx site
-    #   ansible.builtin.file:
-    #     path: /etc/nginx/sites-enabled/default
-    #     state: absent
+    - name: Remove default Nginx site
+      ansible.builtin.file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
 
     
     - name: Test Nginx configuration
@@ -54,7 +54,6 @@
       ansible.builtin.debug:
         var: nginx_test.stdout_lines
 
-    # - name: Configure reverse proxy
 
 
     - name: Ensure Nginx starts on boot
