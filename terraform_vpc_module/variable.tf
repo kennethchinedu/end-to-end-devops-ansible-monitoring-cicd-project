@@ -36,7 +36,7 @@ variable "servers_ami" {
 
 variable "worker_node_instance_type" {
   type = string
-  default = "t2.micro"
+  default = "t2.medium"
 }
 
 # variable "number_of_worker_nodes" {
