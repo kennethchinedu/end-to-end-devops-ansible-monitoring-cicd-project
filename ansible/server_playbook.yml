@@ -32,6 +32,11 @@
         state: present
         update_cache: true 
 
+    - name: Ensure Nginx starts on boot
+      ansible.builtin.service:
+        name: nginx
+        enabled: yes
+
     - name: Pull latest configuration from private Git repo
       ansible.builtin.git:
         repo: "https://github.com/kennethchinedu/end-to-end-devops-ansible-monitoring-cicd-project.git"
@@ -43,13 +48,13 @@
     - name: Configure the Nginx server
       ansible.builtin.copy:
         src: ./templates/reverse_proxy.conf.j2
-        dest: /etc/nginx/sites-enabled/everse_proxy.conf
+        dest: /etc/nginx/conf.d/everse_proxy.conf
       
-    - name: Enable new Nginx site
-      ansible.builtin.file:
-        src: /etc/nginx/sites-available/reverse_proxy.conf
-        dest: /etc/nginx/sites-enabled/reverse_proxy.conf
-        state: link
+    # - name: Enable new Nginx site
+    #   ansible.builtin.file:
+    #     src: /etc/nginx/sites-available/reverse_proxy.conf
+    #     dest: /etc/nginx/sites-enabled/reverse_proxy.conf
+    #     state: link
     
 
      
@@ -78,10 +83,7 @@
 
 
 
-    - name: Ensure Nginx starts on boot
-      ansible.builtin.service:
-        name: nginx
-        enabled: yes
+
 
     - name: reload Nginx service
       ansible.builtin.service:
