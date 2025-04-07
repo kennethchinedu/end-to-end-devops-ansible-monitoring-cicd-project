@@ -33,11 +33,11 @@
 
     - name: Configure the Nginx server
       ansible.builtin.copy:
-        src: default
-        dest: /etc/nginx/sites-available/default
+        src: ./templates/defaultdefault
+        dest: /etc/nginx/sites-enabled/default
         mode: 0644
-      args:
-        chdir: /app/ansible/templates
+      # args:
+      #   chdir: /app/ansible/templates
     
 
      
