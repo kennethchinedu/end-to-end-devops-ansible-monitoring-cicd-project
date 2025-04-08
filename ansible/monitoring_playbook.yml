@@ -112,9 +112,6 @@
           deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://packages.grafana.com/oss/deb stable main
         mode: '0644'
 
-    - name: Update APT cache
-      apt:
-        update_cache: yes
 
     - name: Install Grafana
       apt:
