@@ -30,9 +30,9 @@ jobs:
       - name: Build and test pp
         run: |
          
-            npm install 
-            npm run build
-            npm test
+            sudo npm install 
+            sudo npm run build
+            sudo npm test
         working-directory: ./app/app
 
           
