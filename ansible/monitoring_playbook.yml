@@ -114,9 +114,25 @@
 
 
     - name: Install Grafana
-      apt:
-        name: grafana
-        state: present
+      shell:
+        cmd: |
+          sudo mkdir -p /etc/apt/keyrings
+          curl -fsSL https://packages.grafana.com/gpg.key | gpg --dearmor | sudo tee /etc/apt/keyrings/grafana.gpg > /dev/null
+          echo "deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://packages.grafana.com/oss/deb stable main" | \
+          sudo tee /etc/apt/sources.list.d/grafana.list > /dev/null
+          sudo chmod a+r /etc/apt/keyrings/grafana.gpg
+          sudo apt-get update
+          sudo apt-get install grafana -y
+
+    - name: Ensure Grafana is started
+      ansible.builtin.service:
+        name: grafana-server
+        state: started
+
+    - name: Ensure Grafana is enabled
+      ansible.builtin.service:
+        name: grafana-server
+        enabled: yes
 
     - name: Enable and start Grafana
       systemd:
