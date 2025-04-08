@@ -12,6 +12,8 @@
       - prometheus-blackbox-exporter
       - prometheus-alertmanager
 
+    
+
 
   tasks:
 
@@ -28,12 +30,15 @@
         name: nginx
         enabled: yes
 
-    # - name: copy nginx configuration file
-    #   copy:
-    #     src: ./templates/default #./ansible/templates/prometheus.yml
-    #     dest: /etc/nginx/sites-enabled/default
-    #     #mode: 0644 
+    - name: Configure the Nginx server
+      ansible.builtin.copy:
+        src: ./templates/reverse_proxy.conf.j2
+        dest: /etc/nginx/conf.d/reverse_proxy.conf
 
+    - name: Remove default site from sites-enabled
+      ansible.builtin.file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
 
     - name: test nginx configuration 
       ansible.builtin.command: nginx -t
@@ -80,3 +85,45 @@
         name: "{{ item }}"
         state: restarted
       loop: "{{ monitoring_packages }}"
+
+# Setting up graphana for visualization
+    - name: Download Grafana GPG key
+      get_url:
+        url: https://packages.grafana.com/gpg.key
+        dest: /etc/apt/keyrings/grafana.gpg
+        mode: '0644'
+
+    - name: Ensure keyrings directory exists
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+
+    - name: Download Grafana GPG key
+      get_url:
+        url: https://packages.grafana.com/gpg.key
+        dest: /etc/apt/keyrings/grafana.gpg
+        mode: '0644'
+
+    - name: Add Grafana APT repository securely
+      copy:
+        dest: /etc/apt/sources.list.d/grafana.list
+        content: |
+          deb [signed-by=/etc/apt/keyrings/grafana.gpg] https://packages.grafana.com/oss/deb stable main
+        mode: '0644'
+
+    - name: Update APT cache
+      apt:
+        update_cache: yes
+
+    - name: Install Grafana
+      apt:
+        name: grafana
+        state: present
+
+    - name: Enable and start Grafana
+      systemd:
+        name: grafana-server
+        enabled: yes
+        state: started
+
