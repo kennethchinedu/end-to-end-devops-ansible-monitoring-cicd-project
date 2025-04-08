@@ -1,23 +1,24 @@
 - targets:
     - localhost:9090 
+    - localhost 
   labels:
     group: 'local-server'  
     region: 'us-east-1'
 
 
 - targets:
-    - 54.242.28.234:9100 #node exporter
-    - 54.242.28.234:9115 #blackbox exporter 
-    - 54.242.28.234 #nginx 
+    - 54.147.37.10:9100 #node exporter
+    - 54.147.37.10:9115 #blackbox exporter 
+    - 54.147.37.10 #home 
   labels:
     group: 'worker node 1'  
     region: 'us-east-1'
 
 
 - targets:
-    - 18.212.245.231:9100 #node exporter
-    - 18.212.245.231:9115 #blackbox exporter
-    - 18.212.245.231:9115 #nginx
+    - 3.84.184.47:9100 #node exporter
+    - 3.84.184.47:9115 #blackbox exporter
+    - 13.84.184.47:9115 #home
   labels:
     group: 'worker node 2'  
     region: 'us-east-1' 

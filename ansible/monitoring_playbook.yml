@@ -23,7 +23,7 @@
       ansible.builtin.apt:
         name: nginx
         state: present
-        update_cache: true
+        # update_cache: true
     
     - name: Ensure Nginx starts on boot
       ansible.builtin.service:

@@ -1,4 +1,6 @@
 name: CI/CD Pipeline
+# This workflow is triggered on push events to the main branch
+
 
 on:
    push:
@@ -18,19 +20,19 @@ env:
 jobs:
  
   deploy:
-    name: Deploy Node.js Application
+    name: Build Test and Deploy
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: SSH into Server and Deploy
+      - name: Build and test pp
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@${{ secrets.SERVER_IP }} << EOF
-            cd /app
+         
             npm install 
             npm run build
-            
-          EOF
+            npm test
+        working-directory: ./app/app
+
           
