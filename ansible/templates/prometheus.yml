@@ -45,7 +45,7 @@ scrape_configs:
           - /etc/prometheus/targets.yml
 
     
-      
+    
   
 
 

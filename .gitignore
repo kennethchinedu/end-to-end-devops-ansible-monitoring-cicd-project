@@ -2,3 +2,5 @@
 terraform.tfstate*
 private_key.pem
 pubkey.pem
+errored.tfstate
+ansible/ansible* 
