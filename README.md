@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-## This project
-=======
-=======
->>>>>>> master
 # 🚀 Automated Deployment of Node.js Application with Terraform and Ansible
 
 ## 📋 Project Overview
@@ -48,8 +42,8 @@ This project automates the deployment of a Node.js application by setting up AWS
 ## 🚀 Getting Started
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/your-repo.git
-cd your-repo
+git clone https://github.com/kennethchinedu/end-to-end-devops-ansible-monitoring-cicd-project.git
+cd end-to-end-devops-ansible-monitoring-cicd-project
 ```
 
 ### 2. Deploy Infrastructure with Terraform
@@ -73,7 +67,7 @@ Open `http://<your-ec2-public-ip>` in your browser.
 ---
 
 ## 🌐 Links
-- [Project Repository](https://github.com/yourusername/your-repo)
+- [Project Repository](https://github.com/kennethchinedu/end-to-end-devops-ansible-monitoring-cicd-project)
 
 ---
 
@@ -93,7 +87,3 @@ This project is licensed under the MIT License.
 - Enhance security configurations
 
 Happy Coding! 😄
-<<<<<<< HEAD
->>>>>>> 3b1d8af (added project and github action)
-=======
->>>>>>> master
